@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3883981857271359407}
   - component: {fileID: 3888471434273229934}
   m_Layer: 0
-  m_Name: Turret
+  m_Name: Test Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,8 +52,8 @@ MonoBehaviour:
     m_Bits: 256
   bulletPrefab: {fileID: 1089066405593128002, guid: 1a60a60077696694ebb4942cce01584a, type: 3}
   firingPoint: {fileID: 9181704853037109327}
-  targetingRange: 5
-  bps: 0.5
+  targetingRange: 10
+  bps: 1
 --- !u!1 &5666169617262211234
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,8 +5,7 @@ public class BuildManager : MonoBehaviour
     public static BuildManager main;
 
     [Header("References")]
-    [SerializeField] private GameObject[] towerPrefabs;
-
+    [SerializeField] private Tower[] towers;
     private int selectedTower = 0;
 
     private void Awake()
@@ -14,20 +13,14 @@ public class BuildManager : MonoBehaviour
         main = this;
     }
 
-    public GameObject GetSelectedTower()
+    public Tower GetSelectedTower()
     {
-        if (towerPrefabs == null || towerPrefabs.Length == 0)
-        {
-            Debug.LogError("❌ No hay prefabs de torres asignados en el BuildManager.");
+        if (towers == null || towers.Length == 0)
             return null;
-        }
 
-        if (selectedTower < 0 || selectedTower >= towerPrefabs.Length)
-        {
-            Debug.LogError($"⚠ Índice de torre fuera de rango: {selectedTower}");
+        if (selectedTower < 0 || selectedTower >= towers.Length)
             return null;
-        }
 
-        return towerPrefabs[selectedTower];
+        return towers[selectedTower];
     }
 }

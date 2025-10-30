@@ -13,31 +13,24 @@ public class Plot : MonoBehaviour
     {
         startColor = sr.color;
         if (spawnPoint == null)
-            spawnPoint = transform.Find("SpawnPoint");
+            spawnPoint = transform; 
     }
 
-    private void OnMouseEnter()
-    {
-        sr.color = hoverColor;
-    }
-
-    private void OnMouseExit()
-    {
-        sr.color = startColor;
-    }
+    private void OnMouseEnter() => sr.color = hoverColor;
+    private void OnMouseExit() => sr.color = startColor;
 
     private void OnMouseDown()
     {
         if (tower != null) return;
 
-        GameObject towerToBuild = BuildManager.main.GetSelectedTower();
-
+        Tower towerToBuild = BuildManager.main.GetSelectedTower();
         if (towerToBuild == null)
         {
+            Debug.LogWarning("No tower selected in BuildManager!");
             return;
         }
 
-        Vector3 spawnPosition = spawnPoint != null ? spawnPoint.position : transform.position;
-        tower = Instantiate(towerToBuild, spawnPosition, Quaternion.identity);
+        tower = Instantiate(towerToBuild.prefab, spawnPoint.position, Quaternion.identity);
+        Debug.Log($"Torre construida: {towerToBuild.name}");
     }
 }
