@@ -1,15 +1,27 @@
 using UnityEngine;
+using TMPro;
 
 public class Menu : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Header("References")]
+    [SerializeField] TextMeshProUGUI currencyUI;
+
+    [SerializeField] Animator anim;
+
+    private bool isMenuOpen = true;
+
+    public void ToggleMenu()
     {
-        
+        isMenuOpen = !isMenuOpen;
+        anim.SetBool("MenuOpen", isMenuOpen);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnGUI()
+    {
+        currencyUI.text = LevelManager.main.currency.ToString();
+    }
+
+    public void SetSelected()
     {
         
     }
